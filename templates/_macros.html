@@ -1,0 +1,7 @@
+{% macro form_input(label, id, name, type='text', placeholder='') %}
+    <div class="mb-4">
+        <label for="{{ id }}" class="block text-sm font-medium text-gray-600">{{ label }}</label>
+        <input type="{{ type }}" id="{{ id }}" name="{{ name }}" placeholder="{{ placeholder }}" required
+               class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+    </div>
+{% endmacro %}

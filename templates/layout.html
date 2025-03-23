@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowbite Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/output.css') }}">
+</head>
+
+<body class="bg-gray-100">
+
+    <header>
+        <nav class="bg-blue-600 p-4 text-white">
+            <a href="/" class="text-lg">Inicio</a>
+        </nav>
+    </header>
+
+    <div class="container mx-auto py-8">
+        {% block container %}{% endblock %}
+    </div>
+
+    <footer class="bg-blue-600 p-4 text-white text-center">
+        <p>&copy; 2025 Proyecto Galletas</p>
+    </footer>
+
+</body>
+
+</html>

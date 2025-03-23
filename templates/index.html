@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowbite Flask</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
-</head>
-<body>
-    <h1 class="text-blue-600">Hello, Flask!</h1>
-</body>
-</html>
+{% extends "layout.html" %}
+{% import "_macros.html" as macros %}
+
+{% block container %}
+<div class="flex justify-center items-center min-h-screen">
+    <div class="bg-white p-8 rounded-md shadow-md w-96">
+        <h2 class="text-2xl font-semibold text-center text-blue-600">Login</h2>
+        <form action="/login" method="POST">
+            {{ macros.form_input('Username', 'username', 'username') }}
+            {{ macros.form_input('Password', 'password', 'password', 'password') }}
+            <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
