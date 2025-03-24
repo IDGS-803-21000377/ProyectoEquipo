@@ -1,17 +1,12 @@
-
-from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from config import DevelomentConfig
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-import datetime
 
- 
 db = SQLAlchemy()
 
-
 class User(UserMixin, db.Model):
+    __tablename__ = 'user'
+
     id_user = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
@@ -26,3 +21,7 @@ class User(UserMixin, db.Model):
     
     def get_id(self):
         return str(self.id_user)
+    
+    def has_role(self, role):
+        """Método para verificar los permisos del usuario"""
+        return self.role == role
