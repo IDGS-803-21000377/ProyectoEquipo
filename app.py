@@ -12,11 +12,6 @@ csrf = CSRFProtect(app)
 
 db.init_app(app)
 
-<<<<<<< HEAD
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = "login"
-=======
 with app.app_context():
     db.create_all()  
     
@@ -32,7 +27,6 @@ with app.app_context():
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"  
->>>>>>> feature/LuisGerardo
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -47,16 +41,6 @@ def index():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
-<<<<<<< HEAD
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user and user.check_password(form.password.data):
-            login_user(user)
-            return redirect(url_for("index"))
-        else:
-            flash("Credenciales incorrectas", "danger")
-
-=======
 
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -71,26 +55,18 @@ def login():
             print("Credenciales incorrectas")
             flash("Credenciales incorrectas", "danger")
     
->>>>>>> feature/LuisGerardo
     return render_template("login.html", form=form)
 
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
-<<<<<<< HEAD
-    return redirect(url_for("login"))
-=======
     return redirect(url_for("login"))  
 
 @app.route("/dashboard")
 @login_required
 def dashboard():
     return render_template("dashboard.html")  
-
-
->>>>>>> feature/LuisGerardo
-
 
 
 if __name__ == '__main__':
