@@ -5,6 +5,8 @@ import urllib
 class Config:
     SECRET_KEY = 'clave_nuesa'  
     SECTION_COOKIE_SECURE = False
+    UPLOAD_FOLDER = "static/uploads"
+    ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif", "pdf"}
 
 class DevelopmentConfig(Config):
     DEBUG = True
