@@ -1,31 +1,110 @@
-{% extends "layout.html" %}
-{% import "_macros.html" as macros %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar sesión | Gourmet Cookies</title>
 
-{% block container %}
-<div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 class="text-2xl font-semibold text-center text-blue-600 mb-4">Iniciar sesión</h2>
+  <!-- Tailwind + Flowbite -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.3.0/dist/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.3.0/dist/flowbite.min.js"></script>
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <div class="mb-4">
-                    {% for category, message in messages %}
-                        <div class="p-2 mb-2 text-sm text-white bg-red-500 rounded">{{ message }}</div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
 
-        <form method="POST" action="{{ url_for('login') }}" class="space-y-4">
-            {{ form.csrf_token }}
+  <!-- Tailwind personalizado -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            verdePanaderia: '#007369',
+            grisFondo: '#d3d0cf',
+            verdeClaro: '#e6f2ef',
+          },
+          fontFamily: {
+            sans: ['Quicksand', 'sans-serif']
+          },
+          boxShadow: {
+            logo: '0 4px 12px rgba(0, 0, 0, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+</head>
 
-            {{ macros.form_input('Nombre de usuario', 'username', 'username', 'text') }}
-            {{ macros.form_input('Contraseña', 'password', 'password', 'password') }}
+<body class="bg-grisFondo font-sans flex items-center justify-center min-h-screen">
 
-            <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700">
-                Iniciar sesión
-            </button>
-        </form>
+  <!-- Contenedor del formulario -->
+  <div class="w-full max-w-md p-8 bg-white border border-gray-200 rounded-3xl shadow-2xl ring-1 ring-gray-100 transition duration-300">
+
+    <!-- Logo con sombra -->
+    <div class="flex justify-center mb-4">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Panadería"
+           class="h-60 w-auto rounded-full shadow-logo transition duration-300 hover:scale-105" />
     </div>
-</div>
-{% endblock %}
+
+    <!-- Encabezado -->
+    <h2 class="text-2xl font-bold text-center text-verdePanaderia mb-1">Bienvenido a Gourmet Cookies</h2>
+    <p class="text-center text-sm text-gray-600 mb-6">Inicia sesión para continuar</p>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="mb-4 space-y-2">
+      {% for category, message in messages %}
+        <div class="flash-message relative p-3 pr-10 text-sm text-white rounded-md shadow flex items-center justify-between transition-opacity duration-500
+                    {% if category == 'error' %} bg-red-500 {% elif category == 'success' %} bg-green-500 {% endif %}">
+          <span>{{ message }}</span>
+          <button type="button" class="absolute top-2 right-2 text-white hover:text-gray-200"
+                  onclick="this.parentElement.style.opacity = '0'; setTimeout(() => this.parentElement.remove(), 500)">
+            &times;
+          </button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<!-- Auto-dismiss script -->
+<script>
+  // Auto-remove after 4 seconds
+  document.addEventListener("DOMContentLoaded", () => {
+    const messages = document.querySelectorAll(".flash-message");
+    messages.forEach(msg => {
+      setTimeout(() => {
+        msg.style.opacity = '0';
+        setTimeout(() => msg.remove(), 500); // wait for fade-out
+      }, 4000); // time before dismiss (ms)
+    });
+  });
+</script>
+
+
+    <!-- Formulario -->
+    <form method="POST" action="{{ url_for('auth.login') }}" class="space-y-5">
+      {{ form.csrf_token }}
+
+      <div>
+        <label for="username" class="block mb-1 text-sm font-semibold text-verdePanaderia">Nombre de usuario</label>
+        <input type="text" id="username" name="username" placeholder="Ingresa tu usuario"
+          class="bg-verdeClaro border border-verdePanaderia/40 text-verdePanaderia text-sm rounded-xl focus:ring-verdePanaderia focus:border-verdePanaderia block w-full p-2.5 shadow-sm" required>
+      </div>
+
+      <div>
+        <label for="password" class="block mb-1 text-sm font-semibold text-verdePanaderia">Contraseña</label>
+        <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña"
+          class="bg-verdeClaro border border-verdePanaderia/40 text-verdePanaderia text-sm rounded-xl focus:ring-verdePanaderia focus:border-verdePanaderia block w-full p-2.5 shadow-sm" required>
+      </div>
+
+      <button type="submit"
+        class="w-full text-white bg-verdePanaderia hover:bg-emerald-900 focus:ring-4 focus:outline-none focus:ring-emerald-200 font-semibold rounded-xl text-sm px-5 py-2.5 text-center transition duration-200">
+        Iniciar sesión
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>

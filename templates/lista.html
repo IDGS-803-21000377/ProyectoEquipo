@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="max-w-4xl mx-auto mt-10">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-bold text-white">Recetas</h2>
+        <a href="{{ url_for('recetas.crear') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            + Nueva Receta
+        </a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="mb-4">
+                {% for category, message in messages %}
+                    <div class="p-3 mb-2 text-sm text-white bg-blue-500 rounded">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="bg-gray-800 rounded-lg p-6 shadow-md text-white">
+        {% if recetas %}
+            <ul class="space-y-4">
+                {% for receta in recetas %}
+                    <li class="border-b border-gray-700 pb-4">
+                        <h3 class="text-xl font-semibold">{{ receta.nombre }}</h3>
+                        <p class="text-sm text-gray-400">{{ receta.descripcion }}</p>
+                        <a href="{{ url_for('recetas.detalle', receta_id=receta.id) }}" class="text-blue-400 hover:underline mt-2 inline-block">Ver Detalles</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay recetas registradas aún.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
