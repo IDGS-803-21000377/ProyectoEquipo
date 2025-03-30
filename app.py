@@ -6,6 +6,8 @@ from forms import LoginForm
 from models import User, db  
 from Blueprints.auth.routes import auth_bp
 from Blueprints.recetas.routes import recetas_bp
+from Blueprints.inventarios.routes import inventario_bp
+
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)  
@@ -36,6 +38,8 @@ def load_user(user_id):
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(recetas_bp)
+app.register_blueprint(inventario_bp)
+
 
 if __name__ == '__main__':
     with app.app_context():

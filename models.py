@@ -52,3 +52,16 @@ class RecetaIngrediente(db.Model):
     ingrediente = db.relationship("Ingrediente")
 
 
+class Galleta(db.Model):
+    __tablename__ = 'galleta'  
+    idGalleta = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nombre = db.Column(db.String(45), nullable=False)
+    descripcion = db.Column(db.String(150), nullable=True)
+    existencias = db.Column(db.Integer, nullable=True)
+    precio = db.Column(db.Float, nullable=True)
+    gramaje = db.Column(db.Float, nullable=True)
+    vidaAnaquel = db.Column(db.Date, nullable=True)
+
+    def __repr__(self):
+        return f"<Galleta {self.nombre}>"
+
