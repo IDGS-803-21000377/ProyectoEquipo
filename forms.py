@@ -54,3 +54,10 @@ class GalletaForm(FlaskForm):
     gramaje = FloatField('Gramaje', validators=[Optional()])
     vidaAnaquel = DateField('Vida Anaquel', format='%Y-%m-%d', validators=[Optional()])
     submit = SubmitField('Agregar Galleta')
+
+
+class MaterialForm(FlaskForm):
+    nombreProducto = StringField('Nombre del Producto', validators=[DataRequired()])
+    cantidad = IntegerField('Cantidad', validators=[DataRequired()])
+    fechaCaducidad = DateField('Fecha de Caducidad', validators=[DataRequired()])
+    submit = SubmitField('Guardar')
