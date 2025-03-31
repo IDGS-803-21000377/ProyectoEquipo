@@ -33,7 +33,6 @@ class Ingrediente(db.Model):
     __tablename__ = 'ingrediente'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100), nullable=False)
-    stock = db.Column(db.Float, nullable=False)  # cantidad disponible en almacén
 
 class Receta(db.Model):
     __tablename__ = 'receta'
@@ -46,9 +45,8 @@ class RecetaIngrediente(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     receta_id = db.Column(db.Integer, db.ForeignKey('receta.id'))
     ingrediente_id = db.Column(db.Integer, db.ForeignKey('ingrediente.id'))
-    cantidad = db.Column(db.Float, nullable=False)  # cantidad necesaria
+    cantidad = db.Column(db.Float, nullable=False)
 
     receta = db.relationship("Receta", backref="ingredientes_rel")
     ingrediente = db.relationship("Ingrediente")
-
 
