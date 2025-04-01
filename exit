@@ -1,0 +1,31 @@
+* [33ma656456[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/feature/LuisGerardo[m[33m, [m[1;32mfeature/LuisGerardo[m[33m)[m cambios en materiales
+* [33m6045d46[m cambio
+*   [33mbb56aa7[m Guardando cambios antes del merge
+[32m|[m[33m\[m  
+[32m|[m * [33mea60ad1[m resolviendo cambios
+* [33m|[m [33m3ab5d1b[m Guardando cambios antes del merge
+* [33m|[m   [33m72f290d[m Resuelto conflicto entre master y feature/LuisGerardo
+[33m|[m[35m\[m [33m\[m  
+[33m|[m [35m|[m[33m/[m  
+[33m|[m[33m/[m[35m|[m   
+[33m|[m * [33m47152c7[m cambios
+* [35m|[m [33md6e365e[m[33m ([m[1;31morigin/feature/JorgeLuis[m[33m)[m 29/03 recetas y mas
+* [35m|[m [33m10577b4[m Resuelto conflicto en archivos .pyc
+[36m|[m[35m\[m[35m|[m 
+[36m|[m * [33m0091374[m cambios
+* [1;31m|[m [33m0f88e35[m Eliminar archivos
+* [1;31m|[m [33mfb87fe2[m Merge branch 'feature/LuisGerardo'
+[1;32m|[m[1;31m\[m[1;31m|[m 
+[1;32m|[m * [33m1bee29e[m Eliminar archivos compilados y de entorno virtual del índice de Git
+* [1;33m|[m [33m815e2c5[m Resolver conflictos
+[1;34m|[m[1;33m\[m[1;33m|[m 
+[1;34m|[m * [33md4749bb[m cambios en la rama
+[1;34m|[m * [33m657d24e[m cambios en la rama
+[1;34m|[m * [33m1f4201d[m Guardado
+[1;34m|[m * [33me1ad253[m pruebasLogin
+* [1;35m|[m [33m4e68d2b[m Cambios locales antes del push
+[1;35m|[m[1;35m/[m  
+* [33mcb8ce7a[m pruebamerge
+* [33mb4e697b[m inicio Proyectocolaborativo
+* [33mf570433[m[33m ([m[1;31morigin/feature/LuisClaudio[m[33m, [m[1;31morigin/feature/GaelSanchez[m[33m, [m[1;32mfeature/LuisClaudio[m[33m, [m[1;32mfeature/JorgeLuis[m[33m, [m[1;32mfeature/GaelSanchez[m[33m)[m primer commit
+* [33m79920c5[m primer commit
