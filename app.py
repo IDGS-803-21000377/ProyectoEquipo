@@ -10,7 +10,6 @@ from Blueprints.inventarioMateriales.routes_materiales import inventarioMaterbp
 
 
 from Blueprints.Inventario.routes import inventario_bp
-from Blueprints.auth.routes import auth_bp
 from Blueprints.recetas.routes import recetas_bp
 
 app = Flask(__name__)
