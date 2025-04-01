@@ -32,7 +32,7 @@ def editar_material(id):
         db.session.commit()  
         return redirect(url_for('materiales.index'))
 
-    return render_template('editar_material.html', form=form, material=material)
+    return render_template('editar.html', form=form, material=material)
 
 @inventarioMaterbp.route('/eliminar/<int:id>', methods=['POST'])
 def eliminar_material(id):
