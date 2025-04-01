@@ -1,10 +1,14 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, LoginManager
 from werkzeug.security import generate_password_hash
 from forms import LoginForm, RegistroUsuarioForm
 from models import User, db
 
 auth_bp = Blueprint('auth', __name__, url_prefix='') 
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'auth.login' 
 
 # Página principal/inicio
 @auth_bp.route('/inicio')
@@ -39,12 +43,11 @@ def login():
 
 
 
-# Logout
 @auth_bp.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('auth.index'))
+    return redirect(url_for('auth.login'))  # 'auth' es el nombre del blueprint + 'login' es el nombre de la función
 
 # Dashboard
 @auth_bp.route('/dashboard')

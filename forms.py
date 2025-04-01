@@ -26,15 +26,15 @@ class RegistroUsuarioForm(FlaskForm):
     submit = SubmitField("Registrarse")
 
 class IngredienteForm(FlaskForm):
-    ingrediente_id = SelectField('Ingrediente', coerce=int, validators=[DataRequired()])
-    cantidad = FloatField('Cantidad', validators=[DataRequired()])
-
+    nombre = StringField("Nombre del Ingrediente", validators=[DataRequired()])
+    submit = SubmitField("Agregar Ingrediente")
 
 class RecetaForm(FlaskForm):
-    nombre = StringField('Nombre', validators=[DataRequired()])
-    descripcion = TextAreaField('Descripción')
+    nombre = StringField("Nombre", validators=[DataRequired()])
+    descripcion = TextAreaField("Descripción", validators=[DataRequired()])
     ingredientes = FieldList(FormField(IngredienteForm), min_entries=1)
-    submit = SubmitField('Crear Receta')
+    submit = SubmitField("Crear Receta")
+
 
 
 class GalletaForm(FlaskForm):
