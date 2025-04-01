@@ -1,7 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import DateField, IntegerField, StringField, PasswordField, SubmitField
+from wtforms import DateField, IntegerField, StringField, PasswordField, SubmitField
 from wtforms import validators
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Optional
+from wtforms.validators import DataRequired, Optional
 from wtforms import (
     StringField,
     TextAreaField,
@@ -33,3 +35,29 @@ class RecetaForm(FlaskForm):
     descripcion = TextAreaField('Descripción')
     ingredientes = FieldList(FormField(IngredienteForm), min_entries=1)
     submit = SubmitField('Crear Receta')
+
+
+class GalletaForm(FlaskForm):
+    nombre = StringField('Nombre', validators=[DataRequired()])
+    descripcion = StringField('Descripción', validators=[Optional()])
+    existencias = IntegerField('Existencias', validators=[DataRequired()])
+    precio = FloatField('Precio', validators=[DataRequired()])
+    gramaje = StringField('Gramaje', validators=[Optional()])
+    vidaAnaquel = DateField('Vida Anaquel', format='%Y-%m-%d', validators=[Optional()])
+    submit = SubmitField('Agregar Galleta')
+
+class GalletaForm(FlaskForm):
+    nombre = StringField('Nombre', validators=[DataRequired()])
+    descripcion = StringField('Descripción', validators=[Optional()])
+    existencias = IntegerField('Existencias', validators=[DataRequired()])
+    precio = FloatField('Precio', validators=[DataRequired()])
+    gramaje = FloatField('Gramaje', validators=[Optional()])
+    vidaAnaquel = DateField('Vida Anaquel', format='%Y-%m-%d', validators=[Optional()])
+    submit = SubmitField('Agregar Galleta')
+
+
+class MaterialForm(FlaskForm):
+    nombreProducto = StringField('Nombre del Producto', validators=[DataRequired()])
+    cantidad = IntegerField('Cantidad', validators=[DataRequired()])
+    fechaCaducidad = DateField('Fecha de Caducidad', validators=[DataRequired()])
+    submit = SubmitField('Guardar')
