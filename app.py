@@ -10,8 +10,6 @@ from Blueprints.inventarioMateriales.routes_materiales import inventarioMaterbp
 
 
 from Blueprints.Inventario.routes import inventario_bp
-from Blueprints.auth.routes import auth_bp
-from Blueprints.recetas.routes import recetas_bp
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)  
@@ -65,9 +63,6 @@ app.register_blueprint(inventarioMaterbp)
 
 print("Usuario 'luis' creado exitosamente.")
 
-# Registro de blueprints
-app.register_blueprint(auth_bp)
-app.register_blueprint(recetas_bp)
 
 if __name__ == '__main__':
     app.run(debug=True)
