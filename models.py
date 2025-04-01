@@ -33,6 +33,7 @@ class Ingrediente(db.Model):
     __tablename__ = 'ingrediente'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100), nullable=False)
+    stock = db.Column(db.Float, nullable=False)  # cantidad disponible en almacén
 
 class Receta(db.Model):
     __tablename__ = 'receta'
@@ -45,8 +46,32 @@ class RecetaIngrediente(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     receta_id = db.Column(db.Integer, db.ForeignKey('receta.id'))
     ingrediente_id = db.Column(db.Integer, db.ForeignKey('ingrediente.id'))
-    cantidad = db.Column(db.Float, nullable=False)
+    cantidad = db.Column(db.Float, nullable=False)  
 
     receta = db.relationship("Receta", backref="ingredientes_rel")
     ingrediente = db.relationship("Ingrediente")
 
+class Galleta(db.Model):
+    __tablename__ = 'galleta'  
+    idGalleta = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nombre = db.Column(db.String(45), nullable=False)
+    descripcion = db.Column(db.String(150))
+    existencias = db.Column(db.Integer)
+    precio = db.Column(db.Float)
+    gramaje = db.Column(db.Float)
+    vidaAnaquel = db.Column(db.Date)
+
+    def __repr__(self):
+        return f"<Galleta {self.nombre}>"
+
+
+class Producto(db.Model):
+    __tablename__ = 'producto'
+
+    idProducto = db.Column(db.Integer, primary_key=True)
+    nombreProducto = db.Column(db.String(45), nullable=False)
+    cantidad = db.Column(db.Integer, nullable=False)
+    fechaCaducidad = db.Column(db.Date, nullable=False)
+
+    def __repr__(self):
+        return f'<Producto {self.nombreProducto}>'
